@@ -1,0 +1,5 @@
+library("phangorn")
+tr = read.tree("files/tree.nwk")
+pdf("files/tree.pdf")
+	plot(tr)
+dev.off()
