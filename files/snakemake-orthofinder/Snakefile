@@ -1,0 +1,46 @@
+configfile: 'files/snakemake-orthofinder/config.yml'
+workdir: "files/snakemake-orthofinder"
+print (config)
+
+GENOMES, = glob_wildcards("fna/{genome}.fna")
+
+localrules: all,  make_path, calc_complexity
+outpath = config['out.path']
+
+import os
+
+res = os.path.join(outpath, "tmp/Orthogroups.txt")
+
+rule all:
+	input: 
+		res
+
+
+rule orthofinder:
+	input: 
+		expand("{outpath}/faa/{qu}.fasta", qu=GENOMES, outpath = outpath)
+	output:
+		"{outpath}/tmp/Orthogroups.txt"
+	threads: 10
+	log: "{outpath}/log_of.txt"
+	shell:
+		"bash scripts/run_orthofinder.sh {config[orthofinder.bin]} {threads} > {log}"
+rule prokka:
+	input:
+		ancient("fna/{qu}.fna")
+	output:
+		"{outpath}/prokka/{qu}"
+	threads: 10
+	shell:
+		"name=$(basename {input} .fna);"
+		"prokka --cpus {threads} --outdir {outpath}/{output} --force --prefix $name --locustag $name {input}"
+
+rule make_faa:
+	input:
+		ancient("{outpath}/prokka/{qu}")
+	output:
+		"{outpath}/faa/{qu}.fasta"
+	shell:
+		"name=$(basename {input});"
+		#"cp {input}/$name.gbf {input}/$name.gbk;"
+		"perl scripts/GB2faa.pl {outpath}/{input}/$name.gb* > {outpath}/{output}"

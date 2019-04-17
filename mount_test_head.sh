@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "Testing... NFS shares"
+echo -e "\e[1;32mTesting NFS shares...\e[0m"
 echo -e "Checking remote-fstab..."
 service remote-fstab status | grep "All shares mounted" && \
 	echo -e "\e[1;32mremote-fstab service looks OK\e[0m" || \

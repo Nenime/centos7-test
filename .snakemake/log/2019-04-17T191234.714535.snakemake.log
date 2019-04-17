@@ -1,0 +1,3 @@
+WildcardError in line 15 of /data7a/bio/BacGenomeSoft/centos7-test/files/snakemake-orthofinder/Snakefile:
+No values given for wildcard 'config'.
+  File "/data7a/bio/BacGenomeSoft/centos7-test/files/snakemake-orthofinder/Snakefile", line 15, in <module>
