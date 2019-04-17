@@ -1,3 +1,0 @@
-WorkflowError in line 1 of /data7a/bio/BacGenomeSoft/centos7-test/cluster_test/test_snakemake_orthofinder/Snakefile:
-Config file config.yml not found.
-  File "/data7a/bio/BacGenomeSoft/centos7-test/cluster_test/test_snakemake_orthofinder/Snakefile", line 1, in <module>

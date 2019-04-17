@@ -1,3 +1,0 @@
-WildcardError in line 17 of /data7a/bio/BacGenomeSoft/centos7-test/files/snakemake-orthofinder/Snakefile:
-No values given for wildcard 'outpath'.
-  File "/data7a/bio/BacGenomeSoft/centos7-test/files/snakemake-orthofinder/Snakefile", line 17, in <module>
