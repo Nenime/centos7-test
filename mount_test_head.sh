@@ -16,7 +16,7 @@ do
                 echo -e "\e[1;31m/$i is not mounted!\e[0m"
         fi
 done
-for i in data{{5..7},7a,9,10} 
+for i in data{{5..7},7a,9,10,11,12} 
 do
 	if mountpoint -q /$i/bio
 	then
